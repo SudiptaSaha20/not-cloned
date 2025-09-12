@@ -79,7 +79,7 @@ const WasteManagementDashboard = () => {
       segregationScore: 90,
       violations: 0,
       wasteType: 'Consistent good practice',
-      avatar: 'meow'
+      avatar: 'Ta'
     }
   ];
 
