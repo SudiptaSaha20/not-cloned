@@ -27,7 +27,7 @@ const WasteManagementDashboard = () => {
       address: 'Bagbajar, Chandannagar, Hooghly',
       phone: '+91-98765-43210',
       status: 'warning',
-      creditPoints: 85,
+      creditPoints: 0,
       monthlyCharge: 500.00,
       discount: 15,
       lastPickup: '3 days ago',
