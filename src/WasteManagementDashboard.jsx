@@ -92,17 +92,27 @@ const WasteManagementDashboard = () => {
       amount: 580.00,
       date: '2025-09-05',
       status: 'pending',
-      description: 'Plastic waste found in organic bin'
+      description: 'Plastic waste found in organic bin. Late Disposal  of Waste.'
     },
     {
       id: 2,
       userId: 2,
       userName: 'Uttiyo',
+      violation: 'Points Credited',
+      amount: -50, // Use a negative value to represent points credited
+      date: '2025-08-28',
+      status: 'completed',
+      description: 'Last month\'s ideal segregation score bonus.'
+    },
+    {
+      id: 3,
+      userId: 4, // Tanushree's entry
+      userName: 'Tanushree',
       violation: 'Late bin placement',
       amount: 530.00,
       date: '2025-08-28',
       status: 'completed',
-      description: 'Bin placed after collection time'
+      description: 'Bin placed after collection time. E-Waste (Electronics) in Regular Bins.'
     }
   ];
 
@@ -424,7 +434,11 @@ const WasteManagementDashboard = () => {
 
             <div className="space-y-4">
               {penalties.map((penalty) => (
-                <div key={penalty.id} className="bg-gray-800 rounded-xl p-4 sm:p-6 border-2 border-red-500/30 hover:border-red-500/50 transition-all">
+                <div key={penalty.id} className={`bg-gray-800 rounded-xl p-4 sm:p-6 border-2 transition-all ${
+                  penalty.violation === 'Points Credited' 
+                    ? 'border-green-500/30 hover:border-green-500/50' 
+                    : 'border-red-500/30 hover:border-red-500/50'
+                }`}>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:gap-x-12">
                     <div className="flex-1 w-full sm:w-auto">
                       <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
@@ -433,9 +447,14 @@ const WasteManagementDashboard = () => {
                         </div>
                         <div>
                           <h3 className="text-xl font-semibold text-white">{penalty.userName}</h3>
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${penalty.status === 'pending' ? 'bg-red-900/30 text-red-400' : 'bg-green-900/30 text-green-400'
-                            }`}>
-                            {penalty.status === 'pending' ? 'Payment Pending' : 'Payment Completed'}
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                            penalty.violation === 'Points Credited'
+                              ? 'bg-green-900/30 text-green-400'
+                              : penalty.status === 'pending'
+                                ? 'bg-red-900/30 text-red-400'
+                                : 'bg-green-900/30 text-green-400'
+                          }`}>
+                            {penalty.violation === 'Points Credited' ? 'Points Credited' : penalty.status === 'pending' ? 'Payment Pending' : 'Payment Completed'}
                           </span>
                         </div>
                       </div>
@@ -443,8 +462,11 @@ const WasteManagementDashboard = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div className="bg-gray-700/50 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
-                            <AlertTriangle className="w-4 h-4 text-red-400" />
-                            <span className="text-white font-medium">Violation</span>
+                            {penalty.violation === 'Points Credited' 
+                              ? <Award className="w-4 h-4 text-purple-400" />
+                              : <AlertTriangle className="w-4 h-4 text-red-400" />
+                            }
+                            <span className="text-white font-medium">{penalty.violation === 'Points Credited' ? 'Credit Type' : 'Violation'}</span>
                           </div>
                           <p className="text-gray-300 text-sm">{penalty.violation}</p>
                         </div>
@@ -457,10 +479,15 @@ const WasteManagementDashboard = () => {
                         </div>
                         <div className="bg-gray-700/50 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
-                            <DollarSign className="w-4 h-4 text-green-400" />
-                            <span className="text-white font-medium">Penalty Amount</span>
+                            {penalty.violation === 'Points Credited' 
+                              ? <Award className="w-4 h-4 text-purple-400" />
+                              : <DollarSign className="w-4 h-4 text-green-400" />
+                            }
+                            <span className="text-white font-medium">{penalty.violation === 'Points Credited' ? 'Points Value' : 'Penalty Amount'}</span>
                           </div>
-                          <p className="text-green-400 font-bold text-lg">₹{penalty.amount.toLocaleString('en-IN')}</p>
+                          <p className={`font-bold text-lg ${penalty.violation === 'Points Credited' ? 'text-purple-400' : 'text-green-400'}`}>
+                            {penalty.violation === 'Points Credited' ? `${Math.abs(penalty.amount)} Pts` : `₹${penalty.amount.toLocaleString('en-IN')}`}
+                          </p>
                         </div>
                       </div>
 
