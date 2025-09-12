@@ -89,7 +89,7 @@ const WasteManagementDashboard = () => {
       userId: 1,
       userName: 'Sudipta',
       violation: 'Improper waste segregation',
-      amount: 580.00,
+      amount: 220.00,
       date: '2025-09-05',
       status: 'pending',
       description: 'Plastic waste found in organic bin. Late Disposal  of Waste.'
@@ -109,7 +109,7 @@ const WasteManagementDashboard = () => {
       userId: 4, // Tanushree's entry
       userName: 'Tanushree',
       violation: 'Late bin placement',
-      amount: 530.00,
+      amount: 280.00,
       date: '2025-08-28',
       status: 'completed',
       description: 'Bin placed after collection time. E-Waste (Electronics) in Regular Bins.'
