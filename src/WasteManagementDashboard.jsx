@@ -180,7 +180,7 @@ const WasteManagementDashboard = () => {
                   }`}
               >
                 <AlertTriangle className="w-4 h-4 inline mr-2" />
-                <span className="hidden sm:inline">Penalties & Violations</span>
+                <span className="hidden sm:inline">Penalties & Compensations</span>
                 <span className="sm:hidden">Penalties</span>
                 {penalties.filter(p => p.status === 'pending').length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
@@ -362,8 +362,8 @@ const WasteManagementDashboard = () => {
           <div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 space-y-4 sm:space-y-0">
               <div>
-                <h2 className="text-3xl font-bold text-white mb-2">Penalties & Violations</h2>
-                <p className="text-gray-400">Manage outstanding penalties and violations</p>
+                <h2 className="text-3xl font-bold text-white mb-2">Penalties & Compensations</h2>
+                <p className="text-gray-400">Manage outstanding penalties and show refunds</p>
               </div>
               <div className="bg-red-900/20 px-6 py-3 rounded-xl border border-red-500/30 w-full sm:w-auto">
                 <div className="text-center">
