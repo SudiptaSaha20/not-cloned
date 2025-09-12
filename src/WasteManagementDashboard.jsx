@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Users, 
-  AlertTriangle, 
-  CheckCircle, 
-  CreditCard, 
+import {
+  Users,
+  AlertTriangle,
+  CheckCircle,
+  CreditCard,
   MessageSquare,
   Phone,
   MapPin,
@@ -79,7 +79,7 @@ const WasteManagementDashboard = () => {
       segregationScore: 90,
       violations: 0,
       wasteType: 'Consistent good practice',
-      avatar: 'Ts'
+      avatar: 'TS'
     }
   ];
 
@@ -150,26 +150,24 @@ const WasteManagementDashboard = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-1 bg-gray-900 rounded-lg p-1 w-full sm:w-auto">
               <button
                 onClick={() => setActiveTab('dashboard')}
-                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md font-medium text-sm transition-all duration-200 ${
-                  activeTab === 'dashboard' 
-                    ? 'bg-green-600 text-white shadow-lg' 
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md font-medium text-sm transition-all duration-200 ${activeTab === 'dashboard'
+                    ? 'bg-green-600 text-white shadow-lg'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
-                }`}
+                  }`}
               >
                 <Users className="w-4 h-4 inline mr-2" />
                 User Dashboard
               </button>
               <button
                 onClick={() => setActiveTab('penalties')}
-                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md font-medium text-sm transition-all duration-200 relative ${
-                  activeTab === 'penalties' 
-                    ? 'bg-red-600 text-white shadow-lg' 
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-md font-medium text-sm transition-all duration-200 relative ${activeTab === 'penalties'
+                    ? 'bg-red-600 text-white shadow-lg'
                     : 'text-gray-300 hover:text-white hover:bg-gray-700'
-                }`}
+                  }`}
               >
                 <AlertTriangle className="w-4 h-4 inline mr-2" />
                 <span className="hidden sm:inline">Penalties & Violations</span>
@@ -253,11 +251,10 @@ const WasteManagementDashboard = () => {
               {filteredUsers.map((user) => (
                 <div
                   key={user.id}
-                  className={`bg-gray-800 rounded-xl p-4 sm:p-6 border-2 transition-all ${
-                    user.status === 'warning' 
-                      ? 'border-red-500 bg-red-900/10' 
+                  className={`bg-gray-800 rounded-xl p-4 sm:p-6 border-2 transition-all ${user.status === 'warning'
+                      ? 'border-red-500 bg-red-900/10'
                       : 'border-gray-700 hover:border-gray-600'
-                  }`}
+                    }`}
                 >
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0">
                     <div className="flex items-start space-x-4 w-full sm:w-auto">
@@ -290,10 +287,9 @@ const WasteManagementDashboard = () => {
                           <div className="space-y-2">
                             <div className="flex items-center justify-between">
                               <span className="text-sm text-gray-400">Segregation Score:</span>
-                              <span className={`font-semibold ${
-                                user.segregationScore >= 90 ? 'text-green-400' : 
-                                user.segregationScore >= 70 ? 'text-yellow-400' : 'text-red-400'
-                              }`}>
+                              <span className={`font-semibold ${user.segregationScore >= 90 ? 'text-green-400' :
+                                  user.segregationScore >= 70 ? 'text-yellow-400' : 'text-red-400'
+                                }`}>
                                 {user.segregationScore}%
                               </span>
                             </div>
@@ -306,7 +302,7 @@ const WasteManagementDashboard = () => {
                               <div className="text-right">
                                 <span className="text-gray-500 line-through text-xs sm:text-sm">₹{user.monthlyCharge.toLocaleString('en-IN')}</span>
                                 <span className="text-green-400 font-semibold ml-2 text-sm sm:text-base">
-                                  ₹{(user.monthlyCharge * (1 - user.discount / 100)).toLocaleString('en-IN', {maximumFractionDigits: 0})}
+                                  ₹{(user.monthlyCharge * (1 - user.discount / 100)).toLocaleString('en-IN', { maximumFractionDigits: 0 })}
                                 </span>
                                 <span className="text-xs text-green-400 block">({user.discount}% off)</span>
                               </div>
@@ -378,7 +374,7 @@ const WasteManagementDashboard = () => {
                 >
                   <span>← Back to Penalties List</span>
                 </button>
-                
+
                 <div className="bg-gray-800 rounded-xl p-4 sm:p-8 border border-gray-700">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl sm:text-2xl">
@@ -404,10 +400,9 @@ const WasteManagementDashboard = () => {
                         <div className="space-y-3">
                           <div className="flex items-center justify-between">
                             <span className="text-gray-400 text-sm">Segregation Score:</span>
-                            <span className={`font-bold text-lg ${
-                              selectedUser.segregationScore >= 90 ? 'text-green-400' : 
-                              selectedUser.segregationScore >= 70 ? 'text-yellow-400' : 'text-red-400'
-                            }`}>
+                            <span className={`font-bold text-lg ${selectedUser.segregationScore >= 90 ? 'text-green-400' :
+                                selectedUser.segregationScore >= 70 ? 'text-yellow-400' : 'text-red-400'
+                              }`}>
                               {selectedUser.segregationScore}%
                             </span>
                           </div>
@@ -430,7 +425,7 @@ const WasteManagementDashboard = () => {
             <div className="space-y-4">
               {penalties.map((penalty) => (
                 <div key={penalty.id} className="bg-gray-800 rounded-xl p-4 sm:p-6 border-2 border-red-500/30 hover:border-red-500/50 transition-all">
-                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:gap-x-12">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:gap-x-12">
                     <div className="flex-1 w-full sm:w-auto">
                       <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 mb-4">
                         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
@@ -438,14 +433,13 @@ const WasteManagementDashboard = () => {
                         </div>
                         <div>
                           <h3 className="text-xl font-semibold text-white">{penalty.userName}</h3>
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                            penalty.status === 'pending' ? 'bg-red-900/30 text-red-400' : 'bg-green-900/30 text-green-400'
-                          }`}>
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${penalty.status === 'pending' ? 'bg-red-900/30 text-red-400' : 'bg-green-900/30 text-green-400'
+                            }`}>
                             {penalty.status === 'pending' ? 'Payment Pending' : 'Payment Completed'}
                           </span>
                         </div>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div className="bg-gray-700/50 p-4 rounded-lg">
                           <div className="flex items-center space-x-2 mb-2">
@@ -469,14 +463,14 @@ const WasteManagementDashboard = () => {
                           <p className="text-green-400 font-bold text-lg">₹{penalty.amount.toLocaleString('en-IN')}</p>
                         </div>
                       </div>
-                      
+
                       <div className="bg-gray-700/30 p-4 rounded-lg">
                         <p className="text-gray-300 text-sm">
                           <strong className="text-white">Description:</strong> {penalty.description}
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-col space-y-6 w-full sm:w-auto">
                       <button
                         onClick={() => setSelectedUser(users.find(u => u.id === penalty.userId))}
@@ -487,7 +481,7 @@ const WasteManagementDashboard = () => {
                       </button>
                       <button
                         onClick={() => sendReminder(
-                          users.find(u => u.id === penalty.userId), 
+                          users.find(u => u.id === penalty.userId),
                           'Penalty Reminder'
                         )}
                         className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center space-x-2"
