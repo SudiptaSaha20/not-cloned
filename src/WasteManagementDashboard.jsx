@@ -68,7 +68,7 @@ const WasteManagementDashboard = () => {
     },
     {
       id: 4,
-      name: 'Puchku',
+      name: 'Luchi',
       address: 'Fatokgora,Chandannagar, Hooghly',
       phone: '+91-65432-10987',
       status: 'good',
@@ -79,7 +79,7 @@ const WasteManagementDashboard = () => {
       segregationScore: 90,
       violations: 0,
       wasteType: 'Consistent good practice',
-      avatar: 'TA'
+      avatar: 'mw'
     }
   ];
 
