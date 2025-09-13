@@ -134,8 +134,46 @@ const WasteManagementDashboard = () => {
     }
   };
 
-  const sendReminder = (user, type) => {
-    alert(`${type} reminder sent to ${user.name} at ${user.phone}`);
+  const sendReminder = async (user, type) => {
+    if (type === "SMS" || type === "Warning") {
+      try {
+        const response = await fetch("http://localhost:8000/send-telegram", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_name: user.name,
+            phone: user.phone,
+            address: user.address,
+            status: user.status,
+            segregation_score: user.segregationScore,
+            violations: user.violations,
+            waste_type: user.wasteType,
+            last_pickup: user.lastPickup,
+            message_type: type,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert(
+            `Telegram ${type.toLowerCase()} sent successfully to ${user.name}!`
+          );
+        } else {
+          alert(
+            `Failed to send ${type.toLowerCase()}: ${
+              data.error || "Unknown error"
+            }`
+          );
+        }
+      } catch (error) {
+        alert(`Error sending ${type.toLowerCase()}: ${error.message}`);
+      }
+    } else {
+      alert(`${type} reminder sent to ${user.name} at ${user.phone}`);
+    }
   };
 
   const filteredUsers = users.filter(user =>
