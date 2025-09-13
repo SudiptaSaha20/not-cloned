@@ -137,7 +137,7 @@ const WasteManagementDashboard = () => {
   const sendReminder = async (user, type) => {
     if (type === "SMS" || type === "Warning") {
       try {
-        const response = await fetch("https://not-cloned.onrender.com", {
+        const response = await fetch("https://not-cloned.onrender.com/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
