@@ -137,23 +137,26 @@ const WasteManagementDashboard = () => {
   const sendReminder = async (user, type) => {
     if (type === "SMS" || type === "Warning") {
       try {
-        const response = await fetch("https://not-cloned.onrender.com/", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_name: user.name,
-            phone: user.phone,
-            address: user.address,
-            status: user.status,
-            segregation_score: user.segregationScore,
-            violations: user.violations,
-            waste_type: user.wasteType,
-            last_pickup: user.lastPickup,
-            message_type: type,
-          }),
-        });
+        const response = await fetch(
+          "https://not-cloned.onrender.com/send-telegram",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_name: user.name,
+              phone: user.phone,
+              address: user.address,
+              status: user.status,
+              segregation_score: user.segregationScore,
+              violations: user.violations,
+              waste_type: user.wasteType,
+              last_pickup: user.lastPickup,
+              message_type: type,
+            }),
+          }
+        );
 
         const data = await response.json();
 
