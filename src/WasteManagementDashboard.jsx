@@ -81,10 +81,23 @@ const CommunitySkillsPlatform = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const BookingModal = ({ skill, onClose }) => {
-    const [selectedDate, setSelectedDate] = useState('');
-    const [selectedTime, setSelectedTime] = useState('');
-    const [sessionType, setSessionType] = useState('individual');
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'warning': return <AlertTriangle className="w-4 h-4" />;
+      case 'excellent': return <CheckCircle className="w-4 h-4" />;
+      case 'good': return <Award className="w-4 h-4" />;
+      default: return <Users className="w-4 h-4" />;
+    }
+  };
+
+  const sendReminder = (user, type) => {
+    alert(`${type} reminder sent to ${user.name} at ${user.phone}`);
+  };
+
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    user.address.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
