@@ -8,8 +8,8 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 # Telegram Bot Configuration
-TELEGRAM_BOT_TOKEN = "8161253371:AAFCV0HWSyPB7jW1_RCLAW276Nx1Fesf3fA"  # Replace with your actual bot token
-TELEGRAM_CHAT_ID = "5084091301"  # Replace with your chat ID or group ID
+TELEGRAM_BOT_TOKEN = "INSERT_YOUR_BOT_TOKEN_HERE"  # Replace with your actual bot token
+TELEGRAM_CHAT_ID = "INSERT_YOUR_CHAT_ID_HERE"  # Replace with your chat ID or group ID
 
 
 def send_telegram_message(message):
